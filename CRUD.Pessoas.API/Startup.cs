@@ -28,8 +28,10 @@ namespace CRUD.Pessoas.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //configuração para usar o DbContext + EF Core
             services.AddDbContext<Contexto>(opcoes => opcoes.UseSqlServer(Configuration.GetConnectionString("ConexaoBD")));
+            //configuração para usar o Angular client side
+            services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -50,6 +52,9 @@ namespace CRUD.Pessoas.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            //configuração para aceitar requisições de qualquer origem
+            app.UseCors(opcoes => opcoes.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 
