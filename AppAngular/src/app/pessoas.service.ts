@@ -6,14 +6,15 @@ import { Pessoa } from './Pessoa';
 const httpOptions = {
   headers : new HttpHeaders({
     'Content-Type': 'application/json'
-  })
+  }),
 };
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PessoasService {
-  url = 'https//localhost:5001/api/pessoas';
+  url = 'https://localhost:44301/api/pessoas';
 
   constructor(private http: HttpClient) { }
 
