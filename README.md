@@ -1,7 +1,7 @@
 # CRUD-Angular-WebApi
 <h2>Criando CRUD de pessoas usando boas práticas de arquitetura com Angular 8, .Net Core Web API e SQL Server</h2>
 
-Neste projeto foi desenvolvido um pequeno sistema para o gerenciamento de um CRUD de pessoas através de uma API REST, criada com o .NET no lado servidor e Angular no lado cliente.
+Neste projeto foi desenvolvido um pequeno sistema fullstack para o gerenciamento de um CRUD de pessoas através de uma API REST, criada com o .NET no lado servidor e Angular no lado cliente.
 
 Foram implementados os seguintes tópicos:
 
