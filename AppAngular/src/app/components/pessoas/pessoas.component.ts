@@ -41,17 +41,45 @@ export class PessoasComponent implements OnInit {
     });    
   }
 
-  EnviarFormulario(): void{
-    const pessoa : Pessoa = this.formulario.value;
+  ExibirFormularioAtualizacao(pessoaId): void {
+    this.visibilidadeTabela = false;
+    this.visibilidadeFormulario = true;
 
-    this.pessoasService.SalvarPessoa(pessoa).subscribe((resultado) => {
-      this.visibilidadeFormulario = false;
-      this.visibilidadeTabela = true;
-      alert('Pessoa inserida com sucesso');
-      this.pessoasService.PegarTodos().subscribe((registros) => {
-        this.pessoas = registros;
+    this.pessoasService.PegarPeloId(pessoaId).subscribe((resultado) => {
+      this.tituloFormulario = `Atualizar ${resultado.nome} ${resultado.sobrenome}`;
+
+      this.formulario = new FormGroup({
+        pessoaId: new FormControl(resultado.pessoaId),
+        nome: new FormControl(resultado.nome),
+        sobrenome: new FormControl(resultado.sobrenome),
+        idade: new FormControl(resultado.idade),
+        profissao: new FormControl(resultado.profissao),
       });
     });
+  }
+
+  EnviarFormulario(): void {
+    const pessoa: Pessoa = this.formulario.value;
+
+    if (pessoa.pessoaId > 0) {
+      this.pessoasService.AtualizarPessoa(pessoa).subscribe((resultado) => {
+        this.visibilidadeFormulario = false;
+        this.visibilidadeTabela = true;
+        alert('Pessoa atualizada com sucesso');
+        this.pessoasService.PegarTodos().subscribe((registros) => {
+          this.pessoas = registros;
+        });
+      });
+    } else {
+      this.pessoasService.SalvarPessoa(pessoa).subscribe((resultado) => {
+        this.visibilidadeFormulario = false;
+        this.visibilidadeTabela = true;
+        alert('Pessoa inserida com sucesso');
+        this.pessoasService.PegarTodos().subscribe((registros) => {
+          this.pessoas = registros;
+        });
+      });
+    }
   }
 
   Voltar(): void {
