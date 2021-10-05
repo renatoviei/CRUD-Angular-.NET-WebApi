@@ -1,6 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Pessoa } from 'src/app/Pessoa';
 import { PessoasService } from 'src/app/pessoas.service';
 
@@ -14,11 +15,16 @@ export class PessoasComponent implements OnInit {
   formulario: any;
   tituloFormulario: string;
   pessoas : Pessoa[];
+  nomePessoa : string;
+  pessoaId : number;
 
   visibilidadeTabela : boolean = true;
   visibilidadeFormulario : boolean = false; 
 
-  constructor(private pessoasService: PessoasService) { }
+  modalRef : BsModalRef;
+
+  constructor(private pessoasService: PessoasService,
+    private modalService: BsModalService) { }
 
   ngOnInit(): void {
 
@@ -86,5 +92,22 @@ export class PessoasComponent implements OnInit {
     this.visibilidadeTabela = true;
     this.visibilidadeFormulario = false;
   }
+
+  ExibirConfirmacaoExclusao(pessoaId, nomePessoa, conteudoModal: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(conteudoModal);
+    this.pessoaId = pessoaId;
+    this.nomePessoa = nomePessoa;
+  }
+
+  ExcluirPessoa(pessoaId){
+    this.pessoasService.ExcluirPessoa(pessoaId).subscribe(resultado => {
+      this.modalRef.hide();
+      alert('Pessoa excluída com sucesso');
+      this.pessoasService.PegarTodos().subscribe(registros => {
+        this.pessoas = registros;
+      });
+    });
+  }
+
 
 }
