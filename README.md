@@ -9,7 +9,7 @@ Foram implementados os seguintes tópicos:
 * Criação de modelo de dados para o mapeamento de entidades em bancos de dados;
 * Criação do banco de dados SQL Server utilizando o Entity Framework Core para migração e modelagem de dados, realizando a conexão com a aplicação automaticamente;
 * Desenvolvimento de operações de gerenciamento de pessoas Back-end/Front-end (Cadastro, leitura, atualização e remoção de pessoas de um sistema);
-* Criação de serviços, rotas e componentes em Angular Framework.
+* Criação de serviços, rotas, funções e componentes (html, bootstrap, typescript) em Angular Framework, ultilizando o VSCode.
 
 <h2>Para compilar e subir em localhost:4200/pessoas o projeto Angular</h2>
 
