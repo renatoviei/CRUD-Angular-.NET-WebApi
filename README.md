@@ -11,13 +11,13 @@ Foram implementados os seguintes tópicos:
 * Desenvolvimento de operações de gerenciamento de pessoas Back-end/Front-end (Cadastro, leitura, atualização e remoção de pessoas de um sistema);
 * Criação de serviços, rotas, funções e componentes (html, bootstrap, typescript / javascript) em Angular Framework, ultilizando o VSCode.
 
-<h2>Para compilar e subir em localhost:4200/pessoas o projeto Angular</h2>
+<h2>Para compilar e executar em localhost:4200/pessoas o projeto Angular</h2>
 
 ```
 ng serve
 ```
 
-<h2>Para compilar e subir em localhost:44301/api/pessoas o projeto .Net Core Web API</h2>
+<h2>Para compilar e executar em localhost:44301/api/pessoas o projeto .Net Core Web API</h2>
 
 ```
 dotnet run
